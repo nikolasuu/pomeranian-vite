@@ -2,11 +2,11 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import { analyzeString, printAnalyzeResult } from './ts-exercises-functions';
 
 function App() {
   const [count, setCount] = useState(0);
-
-  function XYZ() {}
+  const result = analyzeString('Nikolas');
 
   return (
     <>
@@ -14,11 +14,12 @@ function App() {
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <ReactLink url="https://react.dev" x={1} />
+        {/* <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        </a> */}
       </div>
-      <h1>Vite + React</h1>
+      <h1>{printAnalyzeResult(result)}</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -31,6 +32,35 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
+  );
+}
+
+let x: number | string;
+
+x = 1;
+x = 2;
+x = 'string';
+
+console.log(x);
+
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+add(5, 6);
+
+const add2 = (a: number, b: number): number => a + b;
+
+add2(4, 7);
+
+export type reactLinkProps = { url: string; x?: number };
+
+function ReactLink(props: reactLinkProps) {
+  return (
+    <a href={props.url} target="_blank">
+      {props.x}
+      <img src={reactLogo} className="logo react" alt="React logo" />
+    </a>
   );
 }
 
