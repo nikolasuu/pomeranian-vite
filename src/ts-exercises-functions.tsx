@@ -22,11 +22,19 @@ export const processString = (string?: string): string => {
   return `${string} - Liczba znaków: ${length}, ${message}`;
 };
 
-export type AnalyzeResult = {
-  string: string;
+export type AnalyzeResult<T = string> = {
+  string: T;
   length: number;
   even: boolean;
 };
+// type AnalyzeNumberResult = AnalyzeResult<null>;
+// let numberResult: AnalyzeNumberResult;
+// numberResult = {
+//   string: 5,
+//   length: 1,
+//   even: false,
+// };
+// console.log(numberResult);
 
 export function analyzeString(string?: string): AnalyzeResult | undefined {
   if (!string) {
